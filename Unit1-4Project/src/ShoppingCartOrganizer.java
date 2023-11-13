@@ -2,120 +2,99 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 public class ShoppingCartOrganizer {
-    class Item {
+    public class Item {
         private String itemName;
         private double itemPrice;
         private int itemQuantity;
-
+        private List<Item> cart = new ArrayList<>();
+        private Scanner s = new Scanner(System.in);
         public Item(String itemName, double itemPrice, int itemQuantity) {
             this.itemName = itemName;
             this.itemPrice = itemPrice;
             this.itemQuantity = itemQuantity;
         }
-
-        public String getItemName() {
-            return itemName;
+        public String toString() {
+            return "Item: " + itemQuantity + " " + itemName + "                   Price: $" + itemPrice + "\n";
         }
-
-        public double getItemPrice() {
+        public double getPrice(){
             return itemPrice;
         }
-
-        public int getItemQuantity() {
+        public String getItemName(){
+            return itemName;
+        }
+        public int getItemQuantity(){
             return itemQuantity;
         }
 
-        public void setItemQuantity(int quantity) {
-            this.itemQuantity = quantity;
-        }
-
-        public double calculateTotal() {
-            return itemPrice * itemQuantity;
-        }
-
-        @Override
-        public String toString() {
-            return "Item: " + itemName + "\nPrice: $" + itemPrice + "\nQuantity: " + itemQuantity;
-        }
-    }
-
-    public class ShoppingCartManager {
-
-        private List<Item> cart = new ArrayList<>();
-        private Scanner scanner = new Scanner(System.in);
-
-        public void showMenu() {
-            int choice;
-
-            do {
-                System.out.println("\nShopping Cart Organizer Menu:");
-                System.out.println("1. Add Item to Cart");
-                System.out.println("2. View Cart");
-                System.out.println("3. Generate Bill");
-                System.out.println("0. Exit");
-
-                System.out.print("Enter your choice: ");
-                choice = scanner.nextInt();
-
-                switch (choice) {
-                    case 1:
-                        addItemToCart();
-                        break;
-                    case 2:
-                        viewCart();
-                        break;
-                    case 3:
-                        generateBill();
-                        break;
-                    case 0:
-                        System.out.println("Exiting the shopping cart organizer. Thank you!");
-                        break;
-                    default:
-                        System.out.println("Invalid choice. Please try again.");
+        public class choiceManager{
+            public void showMenu(String choice) {
+                if (choice.equals("0")) {
+                    ifChoiceIs0();
                 }
-
-            } while (choice != 0);
+                else{
+                    while (choice != "0"){
+                        if (choice == "1") {
+                            addItemToCart(itemName,itemPrice,itemQuantity);
+                        }
+                        else if(choice == "2"){
+                            removeItemFromCart(itemName);
+                        }
+                        else if(choice == "3"){
+                            viewCart();
+                        }
+                        else if (choice == "4") {
+                            generateBill();
+                        }
+                    }
+                }
+            }
         }
 
-        public void addItemToCart() {
-            System.out.print("Enter item name: ");
-            String itemName = scanner.next();
 
-            System.out.print("Enter item price: $");
-            double itemPrice = scanner.nextDouble();
-
-            System.out.print("Enter item quantity: ");
-            int itemQuantity = scanner.nextInt();
-
+        public String ifChoiceIs0(){
+            return ("Exiting the shopping cart organizer. Thank you!");
+        }
+        public String addItemToCart(String itemName, double itemPrice, int itemQuantity){
             Item newItem = new Item(itemName, itemPrice, itemQuantity);
             cart.add(newItem);
-
-            System.out.println("Item added to the cart: " + newItem.getItemName());
+            return("Item added sucessfully!");
         }
-
-        public void viewCart() {
-            if (cart.isEmpty()) {
-                System.out.println("Your cart is empty.");
-            } else {
-                System.out.println("\nYour Cart:");
-                for (Item item : cart) {
-                    System.out.println(item.toString());
-                    System.out.println("Total: $" + item.calculateTotal() + "\n");
+        public String removeItemFromCart(String itemName) {
+            for (Item item : cart) {
+                if (item.getItemName().equals(itemName)) {
+                    cart.remove(item);
+                    return "Item removed successfully!";
                 }
             }
+            return "Item not found in the cart.";
         }
 
-        public void generateBill() {
-            double total = 0;
-
-            System.out.println("\nGenerating Bill:");
-            for (Item item : cart) {
-                System.out.println(item.toString());
-                System.out.println("Total: $" + item.calculateTotal() + "\n");
-                total += item.calculateTotal();
+        public String viewCart() {
+            String cartStatus = "";
+            if (cart.isEmpty()) {
+                return("Your cart is empty.");
+            } else {
+                cartStatus = ("\nYour Cart:");
+                for (Item item : cart) {
+                    cartStatus += item.getItemName() + "\n";
+                }
             }
-
-            System.out.println("Total Bill: $" + total);
+            return cartStatus;
+        }
+        public String generateBill() {
+            String individualPrice = "";
+            double total = 0;
+            for (Item item : cart) {
+                individualPrice += item.toString();
+                total += Math.abs(item.getPrice());
+            }
+            individualPrice += ("--------------------------------\n" +
+                    "Total Bill: $" + total);
+            return individualPrice;
         }
     }
 }
+
+
+
+
