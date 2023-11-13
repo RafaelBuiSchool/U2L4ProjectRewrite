@@ -53,7 +53,7 @@ public class ShoppingCartOrganizer {
         if (cart.isEmpty()) {
             return("---------------------\nYour cart is empty.\n----------------");
         } else {
-            cartStatus = ("----------------------------\nYour Cart: +\n");
+            cartStatus = ("----------------------------\nYour Cart: \n");
             for (Object item : cart) {
                 cartStatus += item.toString() + "\n";
             }
