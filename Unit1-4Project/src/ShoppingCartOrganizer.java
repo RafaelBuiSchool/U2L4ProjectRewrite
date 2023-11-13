@@ -51,24 +51,24 @@ public class ShoppingCartOrganizer {
     public String viewCart() {
         String cartStatus = "";
         if (cart.isEmpty()) {
-            return("Your cart is empty.");
+            return("---------------------\nYour cart is empty.\n----------------");
         } else {
-            cartStatus = ("\nYour Cart:");
+            cartStatus = ("----------------------------\nYour Cart:");
             for (Object item : cart) {
-                cartStatus += getItemName() + "\n";
+                cartStatus += getItemName() + "\n----------------------------";
             }
         }
         return cartStatus;
     }
     public String generateBill() {
-        String individualPrice = "";
+        String individualPrice = "----------------------------\n";
         double total = 0;
         for (Object item : cart) {
             individualPrice += item.toString();
             total += Math.abs(getPrice());
         }
-        individualPrice += ("--------------------------------\n" +
-                "Total Bill: $" + total);
+        individualPrice += ("\n" +
+                "Total Bill: $" + total+"\n----------------------------");
         return individualPrice;
     }
 
