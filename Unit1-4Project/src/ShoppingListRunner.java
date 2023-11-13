@@ -7,9 +7,9 @@ public class ShoppingListRunner {
 
         Scanner s = new Scanner(System.in);
         System.out.println("Welcome to your own personalized shopping cart! Below consists of the different options you can use to track your items...\n");
+        ShoppingCartOrganizer item = new ShoppingCartOrganizer();
         String choice = "";
         while (!choice.equals("0")) {
-            ShoppingCartOrganizer item = new ShoppingCartOrganizer();
             System.out.println("Shopping Cart Organizer Menu:");
             System.out.println("1. Add Item to Cart");
             System.out.println("2. View Cart");

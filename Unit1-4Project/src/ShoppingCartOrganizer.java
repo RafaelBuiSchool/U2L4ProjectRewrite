@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCartOrganizer {
-    private static String itemName;
-    private static double itemPrice;
-    private static int itemQuantity;
-    private static List<Object> cart = new ArrayList<>();
+    private String itemName;
+    private double itemPrice;
+    private int itemQuantity;
+    private List<Object> cart = new ArrayList<>();
 
     public ShoppingCartOrganizer(String itemName, double itemPrice, int itemQuantity) {
         this.itemName = itemName;
@@ -55,7 +55,7 @@ public class ShoppingCartOrganizer {
         } else {
             cartStatus = ("----------------------------\nYour Cart:");
             for (Object item : cart) {
-                cartStatus += getItemName() + "\n----------------------------";
+                cartStatus += item.toString() + "\n----------------------------";
             }
         }
         return cartStatus;
@@ -65,7 +65,7 @@ public class ShoppingCartOrganizer {
         double total = 0;
         for (Object item : cart) {
             individualPrice += item.toString();
-            total += Math.abs(getPrice());
+            total += ((ShoppingCartOrganizer) item).getPrice();
         }
         individualPrice += ("\n" +
                 "Total Bill: $" + total+"\n----------------------------");
