@@ -24,10 +24,4 @@ public class ShoppingCartOrganizer {
 
     }
 
-    public void removeItemFromCart{
-        -This will remove the item from the cart and update right after
-        -This will affect the total bill, and quantity of items in the cart
-        -Will also have user to confirm if they want to remove it
-    }
-
 
