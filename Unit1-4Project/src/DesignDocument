@@ -1,27 +1,37 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class ShoppingCartOrganizer {
     private String itemName-States the name of each item
     private double itemPrice-Each items price
     private int itemQuantity-The amount of each item
+    private List<Object> cart = new ArrayList<>();
 
-    public void addItemToCart{
-        -This will add the item to the Item list and store it there for future use and displays
-        -Can be used to determine futures prices
-        -Determine if it can removed
+    public void showMenu(){
+        -Displays the carts options
     }
 
-    public void viewCart{
+    public String ifChoiceIs0(){
+        -Exits the program
+    }
+    public String addItemToCart{
+        -This will add the item to the Item list and store it there for future use and displays
+        -Can be used to determine futures prices
+    }
+
+    public String removeRandomItem(){
+        -Will randomly remove an item from the cart
+        -display the user with a message that is has been removed
+    }
+
+    public String viewCart{
         -Allows user to view what is inside of their cart
         -Allows user to see the price of each item, quantity and total bill
         -Reports as empty if nothing is inside
     }
 
-    public void generateBill{
+    public String generateBill{
         -This represents the calculations to creating the total bill of all items and prints it.
-
     }
 
 
