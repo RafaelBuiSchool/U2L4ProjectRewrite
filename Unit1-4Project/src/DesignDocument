@@ -50,5 +50,5 @@ public class ShoppingListRunner {
     -Creates a new ShoppingCartOrganizer list for user to add their items
     -Displays the user choices inside a loop until 0 is chosen
         -If 0 is chosen, the program ends
-        -Any other value than 0, activates its correspoding method
+        -Any other value than 0, activates its corresponding method
 }
