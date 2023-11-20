@@ -7,21 +7,29 @@ public class ShoppingCartOrganizer {
     private int itemQuantity-The amount of each item
     private List<Object> cart = new ArrayList<>();
 
+     public ShoppingCartOrganizer(String itemName, double itemPrice, int itemQuantity) {-separates confusion between the variable/parameter and the class attribute
+            this.itemName = itemName;
+            this.itemPrice = itemPrice;
+            this.itemQuantity = itemQuantity;
+        }
+     public ShoppingCartOrganizer(){}-Constructor that doesn't need to take in any values
+
     public void showMenu(){
-        -Displays the carts options
+        -Displays the users options for their shopping cart
     }
 
     public String ifChoiceIs0(){
-        -Exits the program
+        -Exits the program if user enters 0
     }
-    public String addItemToCart{
+     public String addItemToCart(String itemName, double itemPrice, int itemQuantity){
         -This will add the item to the Item list and store it there for future use and displays
         -Can be used to determine futures prices
+        -Display the user with a message that is has been added
     }
 
     public String removeRandomItem(){
         -Will randomly remove an item from the cart
-        -display the user with a message that is has been removed
+        -Display the user with a message that is has been removed
     }
 
     public String viewCart{
@@ -31,7 +39,16 @@ public class ShoppingCartOrganizer {
     }
 
     public String generateBill{
-        -This represents the calculations to creating the total bill of all items and prints it.
+        -this will print the user an itemized bill
+        -Reprints the viewCart and at the bottom a total amount
     }
 
+import java.util.Scanner;
 
+public class ShoppingListRunner {
+    -Creates a new scanner for user input
+    -Creates a new ShoppingCartOrganizer list for user to add their items
+    -Displays the user choices inside a loop until 0 is chosen
+        -If 0 is chosen, the program ends
+        -Any other value than 0, activates its correspoding method
+}
