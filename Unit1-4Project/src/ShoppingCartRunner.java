@@ -30,7 +30,7 @@ public class ShoppingCartRunner {
             System.out.println("3. View Cart");
             System.out.println("4. Generate Bill");
             System.out.println("0. Exit");
-            System.out.print("Enter your choice: ");
+            System.out.print("Enter your numerical choice(e.g. \"1\"): ");
             choice = s.nextLine();
 
             //Choice 1 actions
