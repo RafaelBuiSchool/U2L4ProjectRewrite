@@ -115,7 +115,7 @@ public class ShoppingCartOrganizer {
     public String addItemToCart(String itemName, double itemPrice, int itemQuantity){
         ShoppingCartOrganizer newItem = new ShoppingCartOrganizer(itemName, itemPrice, itemQuantity);
         cart.add(newItem);
-        return("Item added sucessfully!\n---------------------");
+        return("---------------------\nItem added sucessfully!\n---------------------");
     }
 
     /**
