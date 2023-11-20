@@ -14,10 +14,10 @@ public class ShoppingCartOrganizer {
     }
     public ShoppingCartOrganizer(){}
     public String toString() {
-        return "Item: " + itemQuantity + " " + itemName + "                   Price: $" + itemPrice + "\n";
+        return "Item: " + itemQuantity + " " + itemName + "         Price: $" + getPrice() + "\n";
     }
     public double getPrice(){
-        return itemPrice;
+        return Math.round((itemPrice*itemQuantity)*100)/100.0;
     }
     public String getItemName(){
         return itemName;
@@ -46,14 +46,24 @@ public class ShoppingCartOrganizer {
     public String addItemToCart(String itemName, double itemPrice, int itemQuantity){
         ShoppingCartOrganizer newItem = new ShoppingCartOrganizer(itemName, itemPrice, itemQuantity);
         cart.add(newItem);
-        return("Item added sucessfully!\n-------------------------------");
+        return("Item added sucessfully!\n---------------------");
+    }
+    public String removeRandomItem(){
+        if (cart.isEmpty()) {
+            return ("---------------------\nYour cart is empty. Nothing to remove.\n---------------------");
+        }
+        else {
+            int rando = (int) (Math.random() * cart.size());
+            cart.remove(rando);
+            return "---------------------\nRandom Item successfully removed\n---------------------";
+        }
     }
     public String viewCart() {
         String cartStatus = "";
         if (cart.isEmpty()) {
-            return("---------------------\nYour cart is empty.\n----------------");
+            return("---------------------\nYour cart is empty.\n---------------------");
         } else {
-            cartStatus = ("----------------------------\nYour Cart: \n");
+            cartStatus = ("---------------------\nYour Cart: \n");
             for (Object item : cart) {
                 cartStatus += item.toString() + "\n";
             }
@@ -61,14 +71,14 @@ public class ShoppingCartOrganizer {
         return cartStatus + "\n---------------------";
     }
     public String generateBill() {
-        String individualPrice = "----------------------------\n";
+        String individualPrice = "---------------------\n";
         double total = 0;
         for (Object item : cart) {
             individualPrice += item.toString();
             total += ((ShoppingCartOrganizer) item).getPrice();
         }
         individualPrice += ("\n" +
-                "Total Bill: $" + total+"\n----------------------------");
+                "Total Bill: $" + total+"\n---------------------");
         return individualPrice;
     }
 

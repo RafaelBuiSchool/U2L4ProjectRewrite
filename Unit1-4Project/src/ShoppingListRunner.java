@@ -12,8 +12,9 @@ public class ShoppingListRunner {
         while (!choice.equals("0")) {
             System.out.println("Shopping Cart Organizer Menu:");
             System.out.println("1. Add Item to Cart");
-            System.out.println("2. View Cart");
-            System.out.println("3. Generate Bill");
+            System.out.println("2. Remove Random Item from Cart");
+            System.out.println("3. View Cart");
+            System.out.println("4. Generate Bill");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
             choice = s.nextLine();
@@ -26,9 +27,13 @@ public class ShoppingListRunner {
                 itemQuantity = s.nextInt();
                 s.nextLine();
                 System.out.println(item.addItemToCart(itemName, itemPrice, itemQuantity));
-            } if (choice.equals("2")) {
+            }
+            if(choice.equals("2")){
+                System.out.println(item.removeRandomItem());
+            }
+            if (choice.equals("3")) {
                 System.out.println(item.viewCart());
-            } if (choice.equals("3")) {
+            } if (choice.equals("4")) {
                 System.out.println(item.generateBill());
             } if (choice.equals("0")) {
                 System.out.println(item.ifChoiceIs0());
